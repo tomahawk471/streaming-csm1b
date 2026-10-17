@@ -61,29 +61,20 @@ To use your own voice instead, see [Using your own voice](#using-your-own-voice)
 
 ## 5. Start an LLM server
 
-The companion needs an **OpenAI-compatible chat server** for the "thinking". Any of these work; pick one.
+The companion needs an **OpenAI-compatible chat server** for the "thinking". **See [LLM_SETUP.md](LLM_SETUP.md)** for full step-by-step instructions. The short version, with the recommended model ([Dolphin 3.0 Llama 3.1 8B abliterated](https://huggingface.co/mradermacher/Dolphin3.0-Llama3.1-8B-abliterated-GGUF), Q4_K_M: fast, and great at casual conversation):
 
-**llama.cpp** (fastest; what this was developed with):
 ```bash
-# build: https://github.com/ggml-org/llama.cpp#building-the-project
-./build/bin/llama-server -m /path/to/your-model.gguf --port 8080 -c 8192 -ngl 99 --jinja
-```
-No config needed. The defaults point at `http://localhost:8080/v1`.
+# once: build llama.cpp with CUDA (see LLM_SETUP.md) and download the model
+mkdir -p ~/models
+wget -O ~/models/Dolphin3.0-Llama3.1-8B-abliterated.Q4_K_M.gguf \
+  "https://huggingface.co/mradermacher/Dolphin3.0-Llama3.1-8B-abliterated-GGUF/resolve/main/Dolphin3.0-Llama3.1-8B-abliterated.Q4_K_M.gguf"
 
-**Ollama**:
-```bash
-ollama pull llama3.1:8b
-export VC_LLM_URL=http://localhost:11434/v1
-export VC_LLM_MODEL=llama3.1:8b
+# every time, in its own terminal:
+~/llama.cpp/build/bin/llama-server -m ~/models/Dolphin3.0-Llama3.1-8B-abliterated.Q4_K_M.gguf \
+  --port 8080 -c 8192 -ngl 99 --jinja --reasoning off
 ```
 
-**LM Studio**: load a model, start the local server, then:
-```bash
-export VC_LLM_URL=http://localhost:1234/v1
-export VC_LLM_MODEL=<the model name LM Studio shows>
-```
-
-Any 7-8B instruct model works well. Smaller ones also work, but they follow the companion's "short, spoken-style replies" instructions less reliably.
+No config needed: the defaults point at `http://localhost:8080/v1`. Ollama and LM Studio work too (also covered in LLM_SETUP.md).
 
 ## 6. Run it
 
