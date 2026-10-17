@@ -1,0 +1,23 @@
+# Sesame CSM (pinned to the versions its reference code was tested with)
+torch==2.4.0
+torchaudio==2.4.0
+torchtune==0.4.0
+torchao==0.9.0
+tokenizers==0.21.0
+transformers==4.49.0
+huggingface_hub==0.28.1
+moshi==0.2.2
+silentcipher @ git+https://github.com/SesameAILabs/silentcipher@d46d7d0893a583d8968ab3a6626e2289faec9152
+
+# web app
+fastapi==0.141.1
+uvicorn==0.52.3
+jinja2==3.1.6
+websockets==16.1.1
+openai==3.0.0
+
+# speech-to-text, voice activity detection, audio analysis
+faster-whisper==1.2.1
+librosa==0.11.0
+soundfile==0.14.0
+numpy==2.2.6

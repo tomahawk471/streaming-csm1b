@@ -1,0 +1,10 @@
+# Personal/runtime data — never commit
+memory.db
+working_turns.json
+audio_history/
+voice_ref/*
+!voice_ref/README.md
+
+__pycache__/
+*.pyc
+.venv/
