@@ -5,6 +5,10 @@ audio_history/
 voice_ref/*
 !voice_ref/README.md
 
+# Fine-tuning datasets and trained voices (large, and personal)
+data/
+models/
+
 __pycache__/
 *.pyc
 .venv/

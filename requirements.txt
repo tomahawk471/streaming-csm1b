@@ -16,6 +16,10 @@ jinja2==3.1.6
 websockets==16.1.1
 openai==3.0.0
 
+# fine-tuning (finetune/)
+bitsandbytes==0.45.5
+tqdm
+
 # speech-to-text, voice activity detection, audio analysis
 faster-whisper==1.2.1
 librosa==0.11.0

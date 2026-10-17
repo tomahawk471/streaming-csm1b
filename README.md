@@ -9,8 +9,9 @@ A local, real-time **voice-to-voice AI companion** built on [Sesame CSM-1B](http
 - **Memory:** it remembers facts about you between conversations, stored locally in SQLite.
 - **Debug panel:** for every sentence, compare the text CSM was asked to say with what was actually heard, with the pitch curve against the reference voice.
 - **Any LLM:** works with llama.cpp, Ollama, LM Studio, or any OpenAI-compatible server.
+- **Fine-tune your own voice:** turn 30+ minutes of recordings into a model that *is* that voice, rather than imitating a clip. One command to prepare the data and one to train, on a single 24 GB GPU. See [FINETUNING.md](FINETUNING.md).
 
-Everything runs locally. **See [INSTALL.md](INSTALL.md) to get started.**
+Everything runs locally. **See [INSTALL.md](INSTALL.md) to get started**, then [FINETUNING.md](FINETUNING.md) to train a voice.
 
 ## Responsible use
 

@@ -19,6 +19,10 @@ USERNAME = os.environ.get("VC_USERNAME", "user")
 PASSWORD = os.environ.get("VC_PASSWORD", "")
 
 # --- voice ---
+# The speech model: Sesame's base CSM-1B, or a folder produced by
+# finetune/train.py (models/<name>/best) for a fine-tuned voice.
+CSM_MODEL = os.environ.get("VC_CSM_MODEL", "sesame/csm-1b")
+
 # The voice is cloned from voice_ref/sample.wav, with its exact transcript in
 # voice_ref/sample.txt. scripts/download_default_voice.py fetches a
 # public-domain default; see INSTALL.md for using your own.

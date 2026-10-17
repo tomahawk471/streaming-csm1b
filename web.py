@@ -83,6 +83,7 @@ csm_executor.submit(
     ref_audio_path=REF_AUDIO,
     ref_text=open(REF_TEXT).read().strip(),
     ref_speaker=0,
+    model_path=config.CSM_MODEL,
 ).result()
 
 vad.load()

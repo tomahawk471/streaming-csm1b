@@ -24,7 +24,8 @@ import torchaudio
 # Sesame's CSM reference code (Apache 2.0), vendored in ./csm
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "csm"))
 
-from generator import load_csm_1b, Segment  # noqa: E402
+from generator import Generator, Segment  # noqa: E402
+from models import Model  # noqa: E402
 from compiled import (  # noqa: E402
     make_compiled_decoder,
     make_compiled_generate_frame,
@@ -72,11 +73,15 @@ def sample_rate():
     return _generator.sample_rate
 
 
-def load(device="cuda", ref_audio_path=None, ref_text="", ref_speaker=0):
+def load(device="cuda", ref_audio_path=None, ref_text="", ref_speaker=0, model_path="sesame/csm-1b"):
+    """model_path: a Hugging Face repo id or a local folder — e.g. a voice
+    fine-tuned with finetune/train.py (models/<name>/best)."""
     global _generator, _ref_segment
 
-    print("Loading CSM-1B...")
-    _generator = load_csm_1b(device)
+    print(f"Loading CSM model: {model_path}")
+    model = Model.from_pretrained(model_path)
+    model.to(device=device, dtype=torch.bfloat16)
+    _generator = Generator(model)
     model = _generator._model
 
     print("Compiling CSM decoder...")

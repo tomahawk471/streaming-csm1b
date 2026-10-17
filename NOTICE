@@ -9,6 +9,12 @@ This project includes or depends on the following third-party work:
   csm/compiled.py is a derived, torch.compile'd version of models.Model.generate_frame.
   CSM-1B model weights: https://huggingface.co/sesame/csm-1b (Apache 2.0),
   downloaded at runtime, not redistributed.
+- Fine-tuning code (finetune/common.py: training forward pass, batch collation,
+  length bucketing) is adapted from https://github.com/knottwill/sesame-finetune
+  (MIT License, Copyright 2025 Speechmatics / CANTAB RESEARCH LIMITED /
+  William Knottenbelt; see finetune/LICENSE-sesame-finetune).
+- WavLM speaker-verification model (microsoft/wavlm-base-plus-sv), used by
+  finetune/scoring.py, downloaded at runtime.
 - Llama 3.2 tokenizer (meta-llama/Llama-3.2-1B), downloaded at runtime under
   the Llama 3.2 Community License; not redistributed.
 - Mimi audio codec (Kyutai, via the `moshi` package).

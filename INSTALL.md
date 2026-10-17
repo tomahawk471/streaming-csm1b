@@ -123,6 +123,8 @@ To stop it, press `Ctrl+C`.
    Then check the text for misheard words. Mismatches between text and audio noticeably worsen the clone.
 4. Restart `web.py`.
 
+For a voice that stays consistent, rather than imitating a sample sentence by sentence, **fine-tune the model on 30+ minutes of that voice**. See [FINETUNING.md](FINETUNING.md).
+
 > **Consent:** only clone a voice you have the right to use, with the speaker's permission. Sesame's terms for CSM prohibit generating speech that mimics real individuals without their explicit consent. Don't use clips of celebrities or anyone else who hasn't agreed.
 
 ## Configuration
@@ -138,6 +140,7 @@ All settings are environment variables. Set them before running `web.py`.
 | `VC_HOST` | `127.0.0.1` | Bind address. Anything else requires `VC_PASSWORD` |
 | `VC_USERNAME` / `VC_PASSWORD` | `user` / *(none)* | Browser login, enabled when a password is set |
 | `VC_VOICE_DIR` | `./voice_ref` | Where `sample.wav` and `sample.txt` live |
+| `VC_CSM_MODEL` | `sesame/csm-1b` | Speech model: the base model, or a fine-tuned `models/<name>/best` folder |
 | `VC_WHISPER_MODEL` | `small` | Speech-to-text model for your mic (CPU) |
 
 The personality is in `prompt.py`. Interrupt and acknowledgement words and turn-taking timings are in `config.py`.
